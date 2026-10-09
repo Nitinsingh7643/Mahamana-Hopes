@@ -1,0 +1,37 @@
+======================================================
+RENDER ENVIRONMENT VARIABLES (For Backend / Server)
+======================================================
+When you deploy on Render, go to the "Environment Variables" section 
+and add all of these (click "Add from .env" to paste them easily):
+
+NODE_ENV=production
+MONGODB_URI=mongodb+srv://Desifood:YOUR_ACTUAL_PASSWORD_HERE@user.nxbwqet.mongodb.net/mahamana-hopes?appName=User
+JWT_SECRET=make_up_a_long_random_secret_password_here_for_security
+JWT_EXPIRE=7d
+
+# Cloudinary (Replace with real ones if you have them, otherwise keep demo)
+CLOUDINARY_CLOUD_NAME=demo
+CLOUDINARY_API_KEY=demo
+CLOUDINARY_API_SECRET=demo
+
+# Razorpay (Replace with real ones if you have them)
+RAZORPAY_KEY_ID=rzp_test_demo
+RAZORPAY_KEY_SECRET=demo_secret
+
+# Change this to your Vercel URL once you have it!
+CLIENT_URL=https://mahamana-hopes.vercel.app
+
+# Admin Account
+ADMIN_EMAIL=admin@mahamanahopes.org
+ADMIN_PASSWORD=admin123456
+
+
+======================================================
+VERCEL ENVIRONMENT VARIABLES (For Frontend / Client)
+======================================================
+When you deploy on Vercel, go to the "Environment Variables" section 
+and add this single variable:
+
+VITE_API_URL=https://your-backend-app-name.onrender.com/api
+
+(Make sure to replace the URL above with the actual URL Render gives you!)

@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import { Target, Eye, Heart, Shield, Users, Leaf, Handshake, ArrowRight } from 'lucide-react';
+import { Target, Eye, Heart, Shield, Users, Leaf, Handshake, ArrowRight, Phone } from 'lucide-react';
 import AnimatedSection from '../components/AnimatedSection';
 
 const values = [
@@ -92,6 +92,63 @@ export default function About() {
                 </AnimatedSection>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership */}
+      <section className="section-padding bg-white">
+        <div className="container-max">
+          <AnimatedSection className="text-center mb-14">
+            <span className="section-label">Our Team</span>
+            <h2 className="section-title mx-auto">Meet Our Leadership</h2>
+          </AnimatedSection>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <AnimatedSection>
+              <div className="card p-8 text-center group border-t-4 border-green-500 h-full">
+                <div className="w-32 h-32 mx-auto rounded-full bg-primary-50 flex items-center justify-center mb-6 overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
+                  <img src="/president.jpg" alt="Sajal Kumar (Karan)" className="w-full h-full object-cover" />
+                </div>
+                <h3 className="font-heading font-bold text-primary-500 text-2xl mb-1">Sajal Kumar (Karan)</h3>
+                <p className="text-green-500 font-semibold mb-4">President</p>
+                
+                <div className="flex items-center justify-center gap-2 text-gray-600 bg-gray-50 py-2 px-4 rounded-full">
+                  <Phone className="w-4 h-4 text-green-500" />
+                  <a href="tel:+919519059105" className="hover:text-primary-500 transition-colors font-medium">+91 95190 59105</a>
+                </div>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.1}>
+              <div className="card p-8 text-center group border-t-4 border-green-500 h-full">
+                <div className="w-32 h-32 mx-auto rounded-full bg-primary-50 flex items-center justify-center mb-6 overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
+                  <img src="/vice-president.jpg" alt="Shubhangam Rai" className="w-full h-full object-cover" />
+                </div>
+                <h3 className="font-heading font-bold text-primary-500 text-2xl mb-1">Shubhangam Rai</h3>
+                <p className="text-green-500 font-semibold mb-4">Vice President</p>
+                
+                <div className="flex items-center justify-center gap-2 text-gray-600 bg-gray-50 py-2 px-4 rounded-full">
+                  <Phone className="w-4 h-4 text-green-500" />
+                  <a href="tel:+919651082598" className="hover:text-primary-500 transition-colors font-medium">+91 96510 82598</a>
+                </div>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.2}>
+              <div className="card p-8 text-center group border-t-4 border-green-500 h-full">
+                <div className="w-32 h-32 mx-auto rounded-full bg-primary-50 flex items-center justify-center mb-6 overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
+                  <img src="/vice-president-2.jpg" alt="Shriyanshu Dwivedi" className="w-full h-full object-cover" />
+                </div>
+                <h3 className="font-heading font-bold text-primary-500 text-2xl mb-1">Shriyanshu Dwivedi</h3>
+                <p className="text-green-500 font-semibold mb-4">Vice President</p>
+                
+                <div className="flex items-center justify-center gap-2 text-gray-600 bg-gray-50 py-2 px-4 rounded-full">
+                  <Phone className="w-4 h-4 text-green-500" />
+                  <a href="tel:+919569085345" className="hover:text-primary-500 transition-colors font-medium">+91 95690 85345</a>
+                </div>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
