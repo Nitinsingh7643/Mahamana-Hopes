@@ -213,9 +213,9 @@ export default function About() {
             <AnimatedSection delay={0.9}>
               <div className="card p-8 text-center group border-t-4 border-green-500 h-full">
                 <div className="w-32 h-32 mx-auto rounded-full bg-primary-50 flex items-center justify-center mb-6 overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
-                  <img src="/trustee-4.jpg" alt="Sumit Singh" className="w-full h-full object-cover" />
+                  <img src="/trustee-4.jpg" alt="Santu Singh" className="w-full h-full object-cover" />
                 </div>
-                <h3 className="font-heading font-bold text-primary-500 text-2xl mb-1">Sumit Singh</h3>
+                <h3 className="font-heading font-bold text-primary-500 text-2xl mb-1">Santu Singh</h3>
                 <p className="text-green-500 font-semibold mb-4">Trustee</p>
               </div>
             </AnimatedSection>
