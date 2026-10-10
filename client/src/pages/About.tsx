@@ -104,7 +104,7 @@ export default function About() {
             <h2 className="section-title mx-auto">Meet Our Leadership</h2>
           </AnimatedSection>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <AnimatedSection>
               <div className="card p-8 text-center group border-t-4 border-green-500 h-full">
                 <div className="w-32 h-32 mx-auto rounded-full bg-primary-50 flex items-center justify-center mb-6 overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
@@ -147,6 +147,66 @@ export default function About() {
                   <Phone className="w-4 h-4 text-green-500" />
                   <a href="tel:+919569085345" className="hover:text-primary-500 transition-colors font-medium">+91 95690 85345</a>
                 </div>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.3}>
+              <div className="card p-8 text-center group border-t-4 border-green-500 h-full">
+                <div className="w-32 h-32 mx-auto rounded-full bg-primary-50 flex items-center justify-center mb-6 overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
+                  <img src="/secretary.jpg" alt="Vishal Kumar" className="w-full h-full object-cover" />
+                </div>
+                <h3 className="font-heading font-bold text-primary-500 text-2xl mb-1">Vishal Kumar</h3>
+                <p className="text-green-500 font-semibold mb-4">Secretary</p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.4}>
+              <div className="card p-8 text-center group border-t-4 border-green-500 h-full">
+                <div className="w-32 h-32 mx-auto rounded-full bg-primary-50 flex items-center justify-center mb-6 overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
+                  <img src="/treasurer.jpg" alt="Ajit Kumar Singh" className="w-full h-full object-cover" />
+                </div>
+                <h3 className="font-heading font-bold text-primary-500 text-2xl mb-1">Ajit Kumar Singh</h3>
+                <p className="text-green-500 font-semibold mb-4">Treasurer</p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.5}>
+              <div className="card p-8 text-center group border-t-4 border-green-500 h-full">
+                <div className="w-32 h-32 mx-auto rounded-full bg-primary-50 flex items-center justify-center mb-6 overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
+                  <img src="/joint-secretary.jpg" alt="Vinay Kumar Singh" className="w-full h-full object-cover" />
+                </div>
+                <h3 className="font-heading font-bold text-primary-500 text-2xl mb-1">Vinay Kumar Singh</h3>
+                <p className="text-green-500 font-semibold mb-4">Joint Secretary</p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.6}>
+              <div className="card p-8 text-center group border-t-4 border-green-500 h-full">
+                <div className="w-32 h-32 mx-auto rounded-full bg-primary-50 flex items-center justify-center mb-6 overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
+                  <img src="/trustee.jpg" alt="Poonam Raja Chauhan" className="w-full h-full object-cover" />
+                </div>
+                <h3 className="font-heading font-bold text-primary-500 text-2xl mb-1">Poonam Raja Chauhan</h3>
+                <p className="text-green-500 font-semibold mb-4">Trustee</p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.7}>
+              <div className="card p-8 text-center group border-t-4 border-green-500 h-full">
+                <div className="w-32 h-32 mx-auto rounded-full bg-primary-50 flex items-center justify-center mb-6 overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
+                  <img src="/trustee-2.jpg" alt="Anshika Singh Patel" className="w-full h-full object-cover" />
+                </div>
+                <h3 className="font-heading font-bold text-primary-500 text-2xl mb-1">Anshika Singh Patel</h3>
+                <p className="text-green-500 font-semibold mb-4">Trustee</p>
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.8}>
+              <div className="card p-8 text-center group border-t-4 border-green-500 h-full">
+                <div className="w-32 h-32 mx-auto rounded-full bg-primary-50 flex items-center justify-center mb-6 overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
+                  <img src="/trustee-3.jpg" alt="Rahul Kumar Singh" className="w-full h-full object-cover" />
+                </div>
+                <h3 className="font-heading font-bold text-primary-500 text-2xl mb-1">Rahul Kumar Singh</h3>
+                <p className="text-green-500 font-semibold mb-4">Trustee</p>
               </div>
             </AnimatedSection>
           </div>
