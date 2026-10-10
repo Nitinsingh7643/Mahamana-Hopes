@@ -5,7 +5,7 @@ When you deploy on Render, go to the "Environment Variables" section
 and add all of these (click "Add from .env" to paste them easily):
 
 NODE_ENV=production
-MONGODB_URI=mongodb+srv://Desifood:YOUR_ACTUAL_PASSWORD_HERE@user.nxbwqet.mongodb.net/mahamana-hopes?appName=User
+MONGODB_URI=mongodb+srv://<db_username>:<db_password>@user.nxbwqet.mongodb.net/MAHAMANA_HOPES?appName=User
 JWT_SECRET=make_up_a_long_random_secret_password_here_for_security
 JWT_EXPIRE=7d
 

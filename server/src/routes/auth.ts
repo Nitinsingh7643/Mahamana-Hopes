@@ -7,7 +7,7 @@ const router = Router();
 
 const generateToken = (id: string): string => {
   return jwt.sign({ id }, process.env.JWT_SECRET || 'fallback_secret', {
-    expiresIn: process.env.JWT_EXPIRE || '7d',
+    expiresIn: (process.env.JWT_EXPIRE || '7d') as any,
   });
 };
 
@@ -23,7 +23,7 @@ router.post('/register', async (req: AuthRequest, res: Response) => {
     }
 
     const user = await User.create({ name, email, password, phone });
-    const token = generateToken(user._id as string);
+    const token = generateToken(user._id.toString());
 
     res.status(201).json({
       success: true,
@@ -57,7 +57,7 @@ router.post('/login', async (req: AuthRequest, res: Response) => {
       return;
     }
 
-    const token = generateToken(user._id as string);
+    const token = generateToken(user._id.toString());
 
     res.json({
       success: true,
