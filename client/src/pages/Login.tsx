@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { 
-  Lock, Mail, User as UserIcon, Phone, ArrowRight, 
-  ShieldCheck, Heart, Sparkles, Eye, EyeOff 
+  Lock, Mail, User as UserIcon, Phone, ArrowRight, Eye, EyeOff 
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { authAPI } from '../services/api';
@@ -38,12 +37,6 @@ export default function Login() {
 
   // Check if routed from /admin/login
   const isAdminLoginPath = location.pathname.includes('/admin/login');
-
-  const handleQuickAdminFill = () => {
-    setEmail('admin@mahamanahopes.org');
-    setPassword('admin123456');
-    toast.success('Admin credentials autofilled!');
-  };
 
   const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -156,25 +149,6 @@ export default function Login() {
             </div>
           )}
 
-          {/* Quick Admin Demo Button */}
-          {!isRegister && (
-            <div className="mb-6 p-3.5 bg-emerald-50/70 border border-emerald-200/60 rounded-xl flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0" />
-                <div className="text-left">
-                  <p className="text-xs font-bold text-emerald-900 leading-tight">Admin Demo Access</p>
-                  <p className="text-[11px] text-emerald-700">admin@mahamanahopes.org</p>
-                </div>
-              </div>
-              <button
-                type="button"
-                onClick={handleQuickAdminFill}
-                className="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold shadow-sm transition-colors shrink-0"
-              >
-                Autofill
-              </button>
-            </div>
-          )}
 
           {/* Login Form */}
           {!isRegister ? (
