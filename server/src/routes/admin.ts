@@ -111,4 +111,42 @@ router.put('/users/:id', protect, authorize('admin'), async (req: AuthRequest, r
   }
 });
 
+// Create user (admin)
+router.post('/users', protect, authorize('admin'), async (req: AuthRequest, res: Response) => {
+  try {
+    const { name, email, password, role } = req.body;
+    if (!name || !email || !password) {
+      res.status(400).json({ success: false, message: 'Name, email, and password are required' });
+      return;
+    }
+    const existing = await User.findOne({ email });
+    if (existing) {
+      res.status(400).json({ success: false, message: 'User with this email already exists' });
+      return;
+    }
+    const user = await User.create({ name, email, password, role: role || 'user' });
+    res.status(201).json({ success: true, user });
+  } catch (error: any) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// Delete user (admin)
+router.delete('/users/:id', protect, authorize('admin'), async (req: AuthRequest, res: Response) => {
+  try {
+    if (req.user?._id.toString() === req.params.id) {
+      res.status(400).json({ success: false, message: 'You cannot delete your own admin account' });
+      return;
+    }
+    const user = await User.findByIdAndDelete(req.params.id);
+    if (!user) {
+      res.status(404).json({ success: false, message: 'User not found' });
+      return;
+    }
+    res.json({ success: true, message: 'User deleted successfully' });
+  } catch (error: any) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
 export default router;

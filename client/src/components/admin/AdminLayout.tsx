@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Outlet, useNavigate, Link, useLocation } from 'react-router-dom';
 import { 
   LayoutDashboard, Heart, Users, Megaphone, BookOpen, 
-  Image as ImageIcon, MessageSquare, BarChart, Settings, LogOut
+  Image as ImageIcon, MessageSquare, BarChart, Settings, LogOut, User, ShieldCheck
 } from 'lucide-react';
 
 const sidebarLinks = [
@@ -10,16 +10,15 @@ const sidebarLinks = [
   { name: 'Donations', path: '/admin/donations', icon: Heart },
   { name: 'Volunteers', path: '/admin/volunteers', icon: Users },
   { name: 'Campaigns', path: '/admin/campaigns', icon: Megaphone },
-  { name: 'Stories', path: '/admin/stories', icon: BookOpen },
-  { name: 'Gallery', path: '/admin/gallery', icon: ImageIcon },
-  { name: 'Impact Stats', path: '/admin/impact', icon: BarChart },
   { name: 'Messages', path: '/admin/messages', icon: MessageSquare },
-  { name: 'Users', path: '/admin/users', icon: Settings },
+  { name: 'Users & Admins', path: '/admin/users', icon: Settings },
+  { name: 'Impact Stats', path: '/admin/impact', icon: BarChart },
 ];
 
 export default function AdminLayout() {
   const navigate = useNavigate();
   const location = useLocation();
+  const [currentUser, setCurrentUser] = useState<any>(null);
 
   useEffect(() => {
     const token = localStorage.getItem('mhf_token');
@@ -34,7 +33,9 @@ export default function AdminLayout() {
       const user = JSON.parse(userStr);
       if (user.role !== 'admin') {
         navigate('/admin/login');
+        return;
       }
+      setCurrentUser(user);
     } catch {
       navigate('/admin/login');
     }
@@ -97,12 +98,22 @@ export default function AdminLayout() {
           <h1 className="text-xl font-heading font-bold text-gray-800 capitalize">
             {location.pathname.split('/').pop()?.replace('-', ' ')}
           </h1>
-          <div className="flex items-center gap-4">
-            <Link to="/" target="_blank" className="text-sm text-primary-600 font-medium hover:underline">
-              View Website
+          <div className="flex items-center gap-5">
+            <Link to="/" target="_blank" className="text-xs font-semibold px-3 py-1.5 rounded-lg border border-primary-200 text-primary-700 hover:bg-primary-50 transition-colors flex items-center gap-1.5">
+              <span>View Live Website</span>
+              <span className="text-xs">↗</span>
             </Link>
-            <div className="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center">
-              <User className="w-4 h-4 text-primary-600" />
+            <div className="flex items-center gap-2.5 pl-3 border-l border-gray-200">
+              <div className="w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center text-primary-700 font-bold text-sm shadow-sm">
+                {currentUser?.name?.charAt(0).toUpperCase() || 'A'}
+              </div>
+              <div className="text-left hidden sm:block">
+                <p className="text-xs font-bold text-gray-900 leading-tight">{currentUser?.name || 'Administrator'}</p>
+                <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
+                  <ShieldCheck className="w-2.5 h-2.5" />
+                  Admin Only
+                </span>
+              </div>
             </div>
           </div>
         </header>

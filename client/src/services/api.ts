@@ -115,6 +115,8 @@ export const adminAPI = {
   getDashboard: () => api.get('/admin/dashboard'),
   getUsers: (params?: any) => api.get('/admin/users', { params }),
   updateUser: (id: string, data: any) => api.put(`/admin/users/${id}`, data),
+  createUser: (data: any) => api.post('/admin/users', data),
+  deleteUser: (id: string) => api.delete(`/admin/users/${id}`),
 };
 
 export default api;

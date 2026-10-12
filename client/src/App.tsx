@@ -23,6 +23,12 @@ import Gallery from './pages/Gallery';
 import AdminLogin from './pages/admin/Login';
 import AdminLayout from './components/admin/AdminLayout';
 import AdminDashboard from './pages/admin/Dashboard';
+import AdminVolunteers from './pages/admin/Volunteers';
+import AdminCampaigns from './pages/admin/Campaigns';
+import AdminDonations from './pages/admin/Donations';
+import AdminUsers from './pages/admin/Users';
+import AdminMessages from './pages/admin/Messages';
+import AdminImpactStats from './pages/admin/ImpactStats';
 
 // ScrollToTop component
 function ScrollToTop() {
@@ -100,14 +106,14 @@ export default function App() {
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminDashboard />} />
             <Route path="dashboard" element={<AdminDashboard />} />
-            <Route path="donations" element={<ComingSoon title="Manage Donations" />} />
-            <Route path="volunteers" element={<ComingSoon title="Manage Volunteers" />} />
-            <Route path="campaigns" element={<ComingSoon title="Manage Campaigns" />} />
+            <Route path="donations" element={<AdminDonations />} />
+            <Route path="volunteers" element={<AdminVolunteers />} />
+            <Route path="campaigns" element={<AdminCampaigns />} />
+            <Route path="messages" element={<AdminMessages />} />
+            <Route path="users" element={<AdminUsers />} />
+            <Route path="impact" element={<AdminImpactStats />} />
             <Route path="stories" element={<ComingSoon title="Manage Stories" />} />
             <Route path="gallery" element={<ComingSoon title="Manage Gallery" />} />
-            <Route path="impact" element={<ComingSoon title="Manage Impact Stats" />} />
-            <Route path="messages" element={<ComingSoon title="Manage Messages" />} />
-            <Route path="users" element={<ComingSoon title="Manage Users" />} />
           </Route>
         </Routes>
       </Router>
