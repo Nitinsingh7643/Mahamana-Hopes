@@ -4,6 +4,7 @@ import {
   LayoutDashboard, Heart, Users, Megaphone, BookOpen, 
   Image as ImageIcon, MessageSquare, BarChart, Settings, LogOut, User, ShieldCheck
 } from 'lucide-react';
+import { useAuth } from '../AuthContext';
 
 const sidebarLinks = [
   { name: 'Dashboard', path: '/admin/dashboard', icon: LayoutDashboard },
@@ -18,33 +19,31 @@ const sidebarLinks = [
 export default function AdminLayout() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [currentUser, setCurrentUser] = useState<any>(null);
+  const { user: currentUser, logout } = useAuth();
 
   useEffect(() => {
     const token = localStorage.getItem('mhf_token');
     const userStr = localStorage.getItem('mhf_user');
     
     if (!token || !userStr) {
-      navigate('/admin/login');
+      navigate('/login');
       return;
     }
     
     try {
-      const user = JSON.parse(userStr);
-      if (user.role !== 'admin') {
-        navigate('/admin/login');
+      const u = JSON.parse(userStr);
+      if (u.role !== 'admin') {
+        navigate('/login');
         return;
       }
-      setCurrentUser(user);
     } catch {
-      navigate('/admin/login');
+      navigate('/login');
     }
   }, [navigate]);
 
   const handleLogout = () => {
-    localStorage.removeItem('mhf_token');
-    localStorage.removeItem('mhf_user');
-    navigate('/admin/login');
+    logout();
+    navigate('/login');
   };
 
   return (

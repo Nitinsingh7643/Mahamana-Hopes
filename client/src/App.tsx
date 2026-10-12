@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { ThemeProvider } from './components/ThemeContext';
+import { AuthProvider } from './components/AuthContext';
 
 // Pages
 import Home from './pages/Home';
@@ -18,9 +19,9 @@ import Donate from './pages/Donate';
 import Volunteer from './pages/Volunteer';
 import Contact from './pages/Contact';
 import Gallery from './pages/Gallery';
+import Login from './pages/Login';
 
 // Admin
-import AdminLogin from './pages/admin/Login';
 import AdminLayout from './components/admin/AdminLayout';
 import AdminDashboard from './pages/admin/Dashboard';
 import AdminVolunteers from './pages/admin/Volunteers';
@@ -67,57 +68,62 @@ const ComingSoon = ({ title }: { title: string }) => (
 export default function App() {
   return (
     <ThemeProvider>
-      <HelmetProvider>
-        <Router>
-          <ScrollToTop />
-        <Toaster position="top-right" toastOptions={{ duration: 4000 }} />
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="about" element={<About />} />
-            
-            {/* Domains */}
-            <Route path="education" element={<Education />} />
-            <Route path="healthcare" element={<Healthcare />} />
-            <Route path="environment" element={<Environment />} />
-            
-            {/* Action Pages */}
-            <Route path="donate" element={<Donate />} />
-            <Route path="volunteer" element={<Volunteer />} />
-            <Route path="contact" element={<Contact />} />
-            
-            {/* Placeholders */}
-            <Route path="our-work" element={<ComingSoon title="Our Work" />} />
-            <Route path="impact" element={<ComingSoon title="Impact Dashboard" />} />
-            <Route path="campaigns" element={<ComingSoon title="Campaigns" />} />
-            <Route path="stories" element={<ComingSoon title="Stories" />} />
-            <Route path="stories/:slug" element={<ComingSoon title="Story Detail" />} />
-            <Route path="gallery" element={<Gallery />} />
-            <Route path="partner" element={<ComingSoon title="Partner With Us" />} />
-            <Route path="privacy-policy" element={<ComingSoon title="Privacy Policy" />} />
-            <Route path="terms" element={<ComingSoon title="Terms & Conditions" />} />
-            <Route path="faq" element={<ComingSoon title="FAQ" />} />
-            
-            <Route path="*" element={<ComingSoon title="404 - Page Not Found" />} />
-          </Route>
+      <AuthProvider>
+        <HelmetProvider>
+          <Router>
+            <ScrollToTop />
+            <Toaster position="top-right" toastOptions={{ duration: 4000 }} />
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="about" element={<About />} />
+                
+                {/* Domains */}
+                <Route path="education" element={<Education />} />
+                <Route path="healthcare" element={<Healthcare />} />
+                <Route path="environment" element={<Environment />} />
+                
+                {/* Action Pages */}
+                <Route path="donate" element={<Donate />} />
+                <Route path="volunteer" element={<Volunteer />} />
+                <Route path="contact" element={<Contact />} />
+                
+                {/* Placeholders */}
+                <Route path="our-work" element={<ComingSoon title="Our Work" />} />
+                <Route path="impact" element={<ComingSoon title="Impact Dashboard" />} />
+                <Route path="campaigns" element={<ComingSoon title="Campaigns" />} />
+                <Route path="stories" element={<ComingSoon title="Stories" />} />
+                <Route path="stories/:slug" element={<ComingSoon title="Story Detail" />} />
+                <Route path="gallery" element={<Gallery />} />
+                <Route path="partner" element={<ComingSoon title="Partner With Us" />} />
+                <Route path="privacy-policy" element={<ComingSoon title="Privacy Policy" />} />
+                <Route path="terms" element={<ComingSoon title="Terms & Conditions" />} />
+                <Route path="faq" element={<ComingSoon title="FAQ" />} />
+                
+                <Route path="*" element={<ComingSoon title="404 - Page Not Found" />} />
+              </Route>
 
-          {/* Admin Routes */}
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<AdminDashboard />} />
-            <Route path="dashboard" element={<AdminDashboard />} />
-            <Route path="donations" element={<AdminDonations />} />
-            <Route path="volunteers" element={<AdminVolunteers />} />
-            <Route path="campaigns" element={<AdminCampaigns />} />
-            <Route path="messages" element={<AdminMessages />} />
-            <Route path="users" element={<AdminUsers />} />
-            <Route path="impact" element={<AdminImpactStats />} />
-            <Route path="stories" element={<ComingSoon title="Manage Stories" />} />
-            <Route path="gallery" element={<ComingSoon title="Manage Gallery" />} />
-          </Route>
-        </Routes>
-      </Router>
-    </HelmetProvider>
+              {/* Login Routes */}
+              <Route path="/login" element={<Login />} />
+              <Route path="/admin/login" element={<Login />} />
+
+              {/* Admin Routes */}
+              <Route path="/admin" element={<AdminLayout />}>
+                <Route index element={<AdminDashboard />} />
+                <Route path="dashboard" element={<AdminDashboard />} />
+                <Route path="donations" element={<AdminDonations />} />
+                <Route path="volunteers" element={<AdminVolunteers />} />
+                <Route path="campaigns" element={<AdminCampaigns />} />
+                <Route path="messages" element={<AdminMessages />} />
+                <Route path="users" element={<AdminUsers />} />
+                <Route path="impact" element={<AdminImpactStats />} />
+                <Route path="stories" element={<ComingSoon title="Manage Stories" />} />
+                <Route path="gallery" element={<ComingSoon title="Manage Gallery" />} />
+              </Route>
+            </Routes>
+          </Router>
+        </HelmetProvider>
+      </AuthProvider>
     </ThemeProvider>
   );
 }

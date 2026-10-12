@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Heart, ChevronDown, Moon, Sun } from 'lucide-react';
+import { Menu, X, Heart, ChevronDown, Moon, Sun, LogIn, LogOut, ShieldCheck, User as UserIcon } from 'lucide-react';
 import { useTheme } from './ThemeContext';
+import { useAuth } from './AuthContext';
 import logoUrl from '../assets/logo.png';
 
 const navLinks = [
@@ -27,8 +28,10 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [userDropdown, setUserDropdown] = useState(false);
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
+  const { user, isAdmin, logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -121,7 +124,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2.5">
             <button
               onClick={toggleTheme}
               className={`p-2 rounded-full transition-colors ${
@@ -131,6 +134,48 @@ export default function Navbar() {
             >
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
+
+            {/* Auth Buttons */}
+            {user ? (
+              <div className="flex items-center gap-2 pl-1 border-l border-gray-200/50">
+                {isAdmin ? (
+                  <Link
+                    to="/admin/dashboard"
+                    className="px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition-all"
+                  >
+                    <ShieldCheck className="w-3.5 h-3.5" />
+                    Admin Panel
+                  </Link>
+                ) : (
+                  <span className="px-3 py-1 rounded-full text-xs font-semibold bg-primary-100 text-primary-800 flex items-center gap-1">
+                    <UserIcon className="w-3 h-3" />
+                    {user.name.split(' ')[0]}
+                  </span>
+                )}
+                <button
+                  onClick={logout}
+                  title="Sign Out"
+                  className={`p-1.5 rounded-full transition-colors ${
+                    showTransparent ? 'text-white/80 hover:text-white hover:bg-white/20' : 'text-gray-500 hover:text-rose-600 hover:bg-rose-50'
+                  }`}
+                >
+                  <LogOut className="w-4 h-4" />
+                </button>
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                  showTransparent
+                    ? 'text-white border border-white/50 hover:bg-white hover:text-primary-600'
+                    : 'text-gray-700 border border-gray-300 hover:border-primary-500 hover:text-primary-600 hover:bg-gray-50'
+                }`}
+              >
+                <LogIn className="w-3.5 h-3.5" />
+                Sign In
+              </Link>
+            )}
+
             <Link
               to="/volunteer"
               className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
@@ -206,6 +251,39 @@ export default function Navbar() {
                     {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                     <span>{theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}</span>
                   </button>
+
+                  {user ? (
+                    <div className="p-3 bg-gray-50 rounded-xl space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold text-gray-800">{user.name}</span>
+                        <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-primary-100 text-primary-800">
+                          {user.role}
+                        </span>
+                      </div>
+                      {isAdmin && (
+                        <Link
+                          to="/admin/dashboard"
+                          className="w-full flex items-center justify-center gap-2 py-2 bg-emerald-600 text-white rounded-lg text-xs font-bold shadow-sm"
+                        >
+                          <ShieldCheck className="w-4 h-4" /> Admin Dashboard
+                        </Link>
+                      )}
+                      <button
+                        onClick={logout}
+                        className="w-full flex items-center justify-center gap-2 py-2 border border-rose-200 text-rose-600 rounded-lg text-xs font-semibold hover:bg-rose-50"
+                      >
+                        <LogOut className="w-3.5 h-3.5" /> Sign Out
+                      </button>
+                    </div>
+                  ) : (
+                    <Link
+                      to="/login"
+                      className="w-full flex items-center justify-center gap-2 py-2.5 border border-primary-500 text-primary-600 rounded-xl text-sm font-semibold hover:bg-primary-50"
+                    >
+                      <LogIn className="w-4 h-4" /> Sign In / Register
+                    </Link>
+                  )}
+
                   <Link to="/volunteer" className="btn btn-outline text-sm w-full">
                     Volunteer
                   </Link>

@@ -101,11 +101,12 @@ export default function Footer() {
               ))}
             </ul>
 
-            <h4 className="text-white font-heading font-semibold text-base mb-4 mt-8">Legal</h4>
+            <h4 className="text-white font-heading font-semibold text-base mb-4 mt-8">Legal & Access</h4>
             <ul className="space-y-2.5">
               <li><Link to="/privacy-policy" className="text-white/60 text-sm hover:text-green-300 transition-colors">Privacy Policy</Link></li>
               <li><Link to="/terms" className="text-white/60 text-sm hover:text-green-300 transition-colors">Terms & Conditions</Link></li>
               <li><Link to="/faq" className="text-white/60 text-sm hover:text-green-300 transition-colors">FAQ</Link></li>
+              <li><Link to="/login" className="text-green-300/80 text-xs font-semibold hover:text-green-300 transition-colors flex items-center gap-1 mt-1">Staff & Admin Portal →</Link></li>
             </ul>
           </div>
 
