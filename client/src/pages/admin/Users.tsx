@@ -350,7 +350,7 @@ export default function AdminUsers() {
                 <input
                   type="email"
                   required
-                  placeholder="ramesh@mahamanahopes.org"
+                  placeholder="user@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="w-full px-3.5 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500"
