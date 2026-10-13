@@ -183,16 +183,6 @@ export default function About() {
             <AnimatedSection delay={0.6}>
               <div className="card p-8 text-center group border-t-4 border-green-500 h-full">
                 <div className="w-32 h-32 mx-auto rounded-full bg-primary-50 flex items-center justify-center mb-6 overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
-                  <img src="/trustee.jpg" alt="Poonam Raja Chauhan" className="w-full h-full object-cover" />
-                </div>
-                <h3 className="font-heading font-bold text-primary-500 text-2xl mb-1">Poonam Raja Chauhan</h3>
-                <p className="text-green-500 font-semibold mb-4">Trustee</p>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.7}>
-              <div className="card p-8 text-center group border-t-4 border-green-500 h-full">
-                <div className="w-32 h-32 mx-auto rounded-full bg-primary-50 flex items-center justify-center mb-6 overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
                   <img src="/trustee-2.jpg" alt="Anshika Singh Patel" className="w-full h-full object-cover" />
                 </div>
                 <h3 className="font-heading font-bold text-primary-500 text-2xl mb-1">Anshika Singh Patel</h3>
@@ -200,7 +190,7 @@ export default function About() {
               </div>
             </AnimatedSection>
 
-            <AnimatedSection delay={0.8}>
+            <AnimatedSection delay={0.7}>
               <div className="card p-8 text-center group border-t-4 border-green-500 h-full">
                 <div className="w-32 h-32 mx-auto rounded-full bg-primary-50 flex items-center justify-center mb-6 overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
                   <img src="/trustee-3.jpg" alt="Ankit Kumar Singh" className="w-full h-full object-cover" />
@@ -210,7 +200,7 @@ export default function About() {
               </div>
             </AnimatedSection>
 
-            <AnimatedSection delay={0.9}>
+            <AnimatedSection delay={0.8}>
               <div className="card p-8 text-center group border-t-4 border-green-500 h-full">
                 <div className="w-32 h-32 mx-auto rounded-full bg-primary-50 flex items-center justify-center mb-6 overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
                   <img src="/trustee-4.jpg" alt="Santu Singh" className="w-full h-full object-cover" />
@@ -220,7 +210,7 @@ export default function About() {
               </div>
             </AnimatedSection>
 
-            <AnimatedSection delay={1.0}>
+            <AnimatedSection delay={0.9}>
               <div className="card p-8 text-center group border-t-4 border-green-500 h-full">
                 <div className="w-32 h-32 mx-auto rounded-full bg-primary-50 flex items-center justify-center mb-6 overflow-hidden border-4 border-white shadow-lg group-hover:scale-105 transition-transform duration-300">
                   <img src="/trustee-5.jpg" alt="Benkteshwar Tiwari" className="w-full h-full object-cover" />
